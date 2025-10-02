@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tic Tac Toe</h1>
+
+    <!-- Game Board -->
+    <div class="board" id="board">
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+    </div>
+
+    <!-- Winner Message -->
+    <div class="message" id="message">
+      <p id="winnerText"></p>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="restartBtn">Restart</button>
+      <button id="undoBtn">Undo</button>
+      <button id="historyBtn">History</button>
+    </div>
+
+    <!-- History Panel (hidden by default) -->
+    <div class="history" id="historyPanel">
+      <h2>Game History</h2>
+      <ul id="historyList"></ul>
+      <button id="clearHistory">Clear History</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
