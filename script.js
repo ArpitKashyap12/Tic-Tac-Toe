@@ -29,7 +29,7 @@ function startGame() {
   moveHistory = [];
   cells.forEach(cell => {
     cell.classList.remove("x", "o");
-    cell.textContent = "";
+    cell.innerHTML = "";
     cell.addEventListener("click", handleClick, { once: true });
   });
   message.style.display = "none";
@@ -52,7 +52,12 @@ function handleClick(e) {
 
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass);
-  cell.textContent = currentClass.toUpperCase();
+  const img = document.createElement("img");
+  img.src = currentClass === "x" ? "Beetle.png" : "Frog.png"; // image file names
+  img.alt = currentClass.toUpperCase();
+  img.style.width = "70%"; 
+  img.style.height = "70%";
+  cell.appendChild(img);
 }
 
 function checkWin(currentClass) {
@@ -72,7 +77,7 @@ function endGame(draw) {
   if (draw) {
     resultText = "It's a Draw!";
   } else {
-    resultText = `${isOTurn ? "O" : "X"} Wins! 🎉`;
+    resultText = `${isOTurn ? "Frog 🐸" : "Beetle 🪲"} Wins! 🎉`;
   }
   winnerText.textContent = resultText;
   message.style.display = "block";
@@ -83,7 +88,7 @@ function endGame(draw) {
   historyList.appendChild(li);
 
   // Auto restart after 2 seconds
-  setTimeout(startGame, 500);
+  setTimeout(startGame, 800);
 }
 
 // Restart button
@@ -94,7 +99,7 @@ undoBtn.addEventListener("click", () => {
   if (moveHistory.length === 0) return;
   const lastMove = moveHistory.pop();
   lastMove.cell.classList.remove("x", "o");
-  lastMove.cell.textContent = "";
+  lastMove.cell.innerHTML = "";
   lastMove.cell.addEventListener("click", handleClick, { once: true });
   isOTurn = lastMove.player === "o"; // revert turn
 });
@@ -112,4 +117,3 @@ clearHistoryBtn.addEventListener("click", () => {
   historyList.innerHTML = "";
   historyPanel.style.display = "none"; // auto close history panel
 });
-
